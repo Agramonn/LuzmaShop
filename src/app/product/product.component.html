@@ -62,3 +62,41 @@
         </div>
     </div>
 </div>
+
+<!-- Cart Item View -->
+<div class="cart-item-view" *ngIf="view === 'currcartitem'">
+    <div class="card">
+        <div class="row g-0">
+
+            <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
+                <img src="../../assets/Images/bags/1/1.png" alt="Product Image" class="img-fluid">
+            </div>
+            <div class="col-8">
+                <div class="card-body">
+                    <h5 class="card-title title">Title</h5>
+                    <h5 class="card-title text-success">Final Price
+                        <h6 class="card-subtitle text-danger text-decoration-line-through"> Original Price</h6>
+                        <span class="text-primary fs-6"> 11 products are available</span>
+                    </h5>
+                </div>
+
+                <div class="card-footer text-muted d-grid gap-2">
+                    <button class="btn btn-outline-danger" type="button">Remove From</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="cart-item-view" *ngIf="view == 'prevcaritem'">
+    <div class="card text-center">
+
+        <div class="overflow-hidden d-flex justify-content-center align-items-center">
+            <img src="../../assets/Images/bags/1/1.png" alt="Product Image" class="img-fluid rounded-start">
+        </div>
+
+        <div class="card-body">
+            <h5 class="card-title title">Title</h5>
+        </div>
+    </div>
+</div>
