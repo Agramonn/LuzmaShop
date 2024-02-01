@@ -11,6 +11,11 @@ import { ProductsDetailsComponent } from './products-details/products-details.co
 import { CartComponent } from './cart/cart.component';
 import { OrderComponent } from './order/order.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { OpenProductsDirective } from './directives/open-products.directive';
+import { OpenProductsDetailsDirective } from './directives/open-products-details.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductsComponent,
     ProductsDetailsComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    HeaderComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+    OpenProductsDirective,
+    OpenProductsDetailsDirective
   ],
   imports: [
     BrowserModule,
