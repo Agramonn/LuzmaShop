@@ -28,8 +28,10 @@
         </div>
 
         <div class="btn-group btn-group-lg me-2" role="group">
-            <button type="button"class="btn btn-outline-light">Login</button>
-            <button type="button"class="btn btn-outline-light">Register</button>
+            <button type="button"class="btn btn-outline-light" data-bs-toggle="modal"       
+                data-bs-target="#generalmodal" (click)="openModal('login')">Login</button>
+            <button type="button"class="btn btn-outline-light" data-bs-toggle="modal" 
+                data-bs-target="#generalmodal" (click)="openModal('register')">Register</button>
             <button type="button"class="btn btn-outline-light">Account</button>
             <button type="button"class="btn btn-outline-light" routerLink="/cart">Cart</button>
             <button type="button"class="btn btn-outline-light"routerLink="/orders">Orders</button>
@@ -38,3 +40,19 @@
 
     </div>
 </header>
+
+<!-- Modal -->
+<div class="modal fade" id="generalmodal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" #modalTitle></h5>
+                <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ng-container #container></ng-container>
+            </div>
+        </div>
+    </div>
+
+</div>
