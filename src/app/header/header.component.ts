@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit, Type, ViewChild, ViewContainerRef } from '@angular/core';
-import { NavigationItem } from '../models/models';
+import { Category, NavigationItem } from '../models/models';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +10,13 @@ import { RegisterComponent } from '../register/register.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
+  constructor(public navigationService : NavigationService){ }
   @ViewChild('modalTitle') modalTitle!: ElementRef;
   @ViewChild('container', {read: ViewContainerRef, static: true})
   container!: ViewContainerRef;
 
-  navigationList: NavigationItem[] = [
-    {
-      category: "clothes",
-      subcategories: ["bags","boots"]
-    },
-    {
-      category: "beauty",
-      subcategories: ["makeup","skincare"]
-    }
-  ];
-
-  constructor(){ }
   ngOnInit(): void {
+    this.navigationService.getCategoryList();
   }
 
   openModal(name: string){

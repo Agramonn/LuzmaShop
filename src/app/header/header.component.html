@@ -11,15 +11,15 @@
                     Categories
                 </button>
                 <ul class="dropdown-menu fs-5">
-                    <ng-container *ngFor="let item of navigationList; let i = index;">
-                        <li class="text-center fw-bold">{{item.category | titlecase}}</li>
+                    <ng-container *ngFor="let item of navigationService.list; let i = index;">
+                        <li class="text-center fw-bold">{{item.category| titlecase}}</li>
                         <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
                             <a class="dropdown-item" OpenProducts
                                [category]="{id: 0, 'category': item.category, 'subcategory': subcategory}">
                                 {{subcategory | titlecase}}
                             </a>
                         </li>
-                        <li *ngIf="i !== navigationList.length - 1">
+                        <li *ngIf="i !== navigationService.list.length">
                             <hr class="dropdown-divider">
                         </li>
                     </ng-container>
