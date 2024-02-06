@@ -12,29 +12,29 @@ export class HomeComponent implements OnInit{
       banerimage: 'baner/banner_skincare.png',
       category: {
         id:1,
-        category: 'Beauty',
-        subcategory: 'skincare',}
+        category: 'beauty',
+        subCategory: 'skincare',}
     },
     { 
       banerimage: 'baner/banner_makeup.png',
       category: {
         id:2,
         category: 'beauty',
-        subcategory: 'makeup',}
+        subCategory: 'makeup',}
     },
     { 
       banerimage: 'baner/banner_perfum.png',
       category: {
         id:3,
-        category: 'Beauty',
-        subcategory: 'perfume',}
+        category: 'beauty',
+        subCategory: 'perfume',}
     },
     { 
       banerimage: 'baner/banner_bag.png',
       category: {
         id:4,
         category: 'clothes',
-        subcategory: 'bag',}
+        subCategory: 'bags',}
     },
   ];
   constructor() {}

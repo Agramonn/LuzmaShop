@@ -1,6 +1,6 @@
 <header class="w-100 h-100 bg-dark px-4 my-shadow d-flex justify-content-between align-items-center">
     <div class="text-light fs-2 fw-bold fst-italic">
-        <span>Shopping Point</span>
+        <span>Luza Shop</span>
     </div>
 
     <div class="btn-toolbar" role="toolbar">
@@ -13,10 +13,10 @@
                 <ul class="dropdown-menu fs-5">
                     <ng-container *ngFor="let item of navigationService.list; let i = index;">
                         <li class="text-center fw-bold">{{item.category| titlecase}}</li>
-                        <li *ngFor="let subcategory of item.subcategories" [style.cursor]="'pointer'">
+                        <li *ngFor="let subCategory of item.subCategories" [style.cursor]="'pointer'">
                             <a class="dropdown-item" OpenProducts
-                               [category]="{id: 0, 'category': item.category, 'subcategory': subcategory}">
-                                {{subcategory | titlecase}}
+                               [category]="{id: 0, 'category': item.category, 'subCategory': subCategory}">
+                                {{subCategory | titlecase}}
                             </a>
                         </li>
                         <li *ngIf="i !== navigationService.list.length">

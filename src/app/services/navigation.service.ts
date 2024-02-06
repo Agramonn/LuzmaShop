@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment.development';
 import { NavigationItem } from '../models/models';
 
@@ -21,11 +21,11 @@ export class NavigationService {
           const categoryIndex = acc.findIndex((item: NavigationItem) => item.category === curr.category);
 
           if (categoryIndex !== -1) {
-            acc[categoryIndex].subcategories.push(curr.subCategory);
+            acc[categoryIndex].subCategories.push(curr.subCategory);
           } else {
             acc.push({
               category: curr.category,
-              subcategories: [curr.subCategory]
+              subCategories: [curr.subCategory]
             });
           }
 
@@ -37,5 +37,14 @@ export class NavigationService {
       }, error => {
         console.log(error);
       });
+  }
+
+  getProducts(category: string, subcategory: string, count: number){
+    return this.http.get<any[]>(this.url+'/Products/GetProductsCategory', {
+      params: new HttpParams()
+        .set('category',category)
+        .set('subcategory',subcategory)
+        .set('count',count),
+    });
   }
 }

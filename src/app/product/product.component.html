@@ -5,22 +5,22 @@
         </div>
     
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/Images/bags/1/1.png" alt="Product Image" class="img-fluid"
-            OpenProductsDetails [productId]="1">
+            <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="Product Image" class="img-fluid"
+            OpenProductsDetails [productId]="product.id">
         </div>
     
         <div class="card-body">
-            <h5 class="card-title title">Title</h5>
-            <h6 class="card-subtitle my-2 text-primary"> 12 products are available. </h6>
-            <p class="card-text description"> Description </p>
+            <h5 class="card-title title">{{product.title}}</h5>
+            <h6 class="card-subtitle my-2 text-primary"> {{product.quantity}} products are available. </h6>
+            <p class="card-text description"> {{product.description}} </p>
         </div>
     
         <div class="card-body">
-            <h5 class="card-title text-success"> Final Price
-                <span class="text-primary"> -20% </span>
+            <h5 class="card-title text-success"> {{utilityService.applyDiscount(product.price, product.offer.discount)}}
+                <span class="text-primary"> -{{product.offer.discount}}% </span>
             </h5>
             <h6 class="card-subtitle text-danger text-decoration-line-through">
-                Original Price
+                {{product.price}}
             </h6>
         </div>
     
@@ -70,14 +70,14 @@
         <div class="row g-0">
 
             <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/Images/bags/1/1.png" alt="Product Image" class="img-fluid" OpenProductsDetails [productId]="1">
+                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.JPG" alt="Product Image" class="img-fluid" OpenProductsDetails [productId]="product.id">
             </div>
             <div class="col-8">
                 <div class="card-body">
-                    <h5 class="card-title title">Title</h5>
+                    <h5 class="card-title title">{{product.title}}</h5>
                     <h5 class="card-title text-success">Final Price
                         <h6 class="card-subtitle text-danger text-decoration-line-through"> Original Price</h6>
-                        <span class="text-primary fs-6"> 11 products are available</span>
+                        <span class="text-primary fs-6"> {{product.quantity}} products are available</span>
                     </h5>
                 </div>
 
