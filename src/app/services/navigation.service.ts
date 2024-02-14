@@ -47,4 +47,9 @@ export class NavigationService {
         .set('count',count),
     });
   }
+
+  getProduct(id: number){
+    let url = this.url + '/Products/' + id;
+    return this.http.get(url);
+  }
 }
