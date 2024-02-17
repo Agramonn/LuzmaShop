@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavigationService } from '../services/navigation.service';
 import { UtilityService } from '../services/utility.service';
-import { Product } from '../models/models';
+import { Product, Review } from '../models/models';
 import { FormControl } from '@angular/forms';
 
 @Component({
@@ -16,6 +16,7 @@ export class ProductsDetailsComponent implements OnInit{
   reviewControl = new FormControl('');
   showError = false;
   reviewSaved = false;
+  otherReviews: Review[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -28,6 +29,7 @@ export class ProductsDetailsComponent implements OnInit{
       let id = params.id;
       this.navigationService.getProduct(id).subscribe((res:any) => {
         this.product = res;
+        this.fetchAllReviews();
       });
     });
   }
@@ -39,5 +41,24 @@ export class ProductsDetailsComponent implements OnInit{
       this.showError = true;
       return;
     }
+
+    let userId = this.utilityService.getUser().id;
+    let productId = this.product.id;
+
+    this.navigationService.submitReview(userId, productId, review)
+    .subscribe((res: any) => {
+      this.reviewSaved = true;
+      this.fetchAllReviews();
+      this.reviewControl.setValue("");
+    });
+  }
+
+  fetchAllReviews(){
+    this.otherReviews = [];
+    this.navigationService.getAllReviewsOfProducts(this.product.id).subscribe((res:any) => {
+      for(let review of res){
+        this.otherReviews.push(review);
+      }
+    });
   }
 }

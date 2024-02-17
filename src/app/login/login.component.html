@@ -1,5 +1,5 @@
 <!-- Login Form -->
-<form [formGroup]="loginForm">
+<form [formGroup]="loginForm" (ngSubmit)="login()">
 
     <!-- Email -->
     <div class="mb-3">

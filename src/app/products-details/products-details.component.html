@@ -1,4 +1,4 @@
-<div class="my-container mx-auto border border-dark">
+<div class="my-container mx-auto ">
     <div class="row g-0">
 
         <!-- Profile Image of Product -->
@@ -32,7 +32,9 @@
                 <div class="card-body">
                     <h6 class="card-subtitle my-2 text-primary"> {{product.quantity}} product are available </h6>
                     <div class="d-grid gap-2">
-                        <button type="button" class="btn btn-outline-success">Add to Cart</button>
+                        <button type="button" class="btn btn-outline-success" [disabled]="!utilityService.isLoggedIn()">Add to Cart
+                        <span *ngIf="!utilityService.isLoggedIn()">(Login First)</span>
+                        </button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -70,7 +72,7 @@
                     Save Review
                 </button>
                 <div>
-                    <h6 class="text-danger mt-4">Login first, then eneter the review.</h6>
+                    <h6 class="text-danger mt-4" *ngIf="!utilityService.isLoggedIn()">Login first, then eneter the review.</h6>
                     <h6 class="text-danger" *ngIf="showError">Review/Rating Cannot Be Empty!</h6>
                     <h6 class="text-success" *ngIf="reviewSaved">Review Saved Successfully!</h6>
                 </div>
@@ -78,21 +80,21 @@
         </div>
         <div class="col p-3">
             <h3>Other Reviews</h3>
-            <h6 *ngIf="1">No Reviews Yet!</h6>
-            <div class="card mt-3" *ngFor="let review of [1,2,3]">
+            <h6 *ngIf="otherReviews.length == 0">No Reviews Yet!</h6>
+            <div class="card mt-3" *ngFor="let review of otherReviews">
                 <div class="card-header d-flex justify-content-between">
                     <div class="card-text">
-                        Rohan
-                        Ankalkote
+                        {{review.user.firstName}}
+                        {{review.user.lastName}}
                     </div>
                     <div class="card-text fst-italic">
                         Reviewed On: <span class="fw-bold">
-                            {{"31 Jan 2024" | date:"dd-MMM-yyyy"}}
+                            {{review.createdAt| date:"dd-MMM-yyyy"}}
                         </span>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="card-text">Review</div>
+                    <div class="card-text">{{review.value}}</div>
                 </div>
             </div>
         </div>

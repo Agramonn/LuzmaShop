@@ -3,6 +3,7 @@ import { Category, NavigationItem } from '../models/models';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
 import { NavigationService } from '../services/navigation.service';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { NavigationService } from '../services/navigation.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
-  constructor(public navigationService : NavigationService){ }
+  constructor(public navigationService : NavigationService, public utilityService: UtilityService){ }
   @ViewChild('modalTitle') modalTitle!: ElementRef;
   @ViewChild('container', {read: ViewContainerRef, static: true})
   container!: ViewContainerRef;

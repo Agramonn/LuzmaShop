@@ -30,3 +30,23 @@ export interface Product {
     quantity: number;
     imageName: string;
 }
+
+export interface User {
+    id: number;
+    firstName: string;
+    lastName: string;
+    email: string;
+    password: string;
+    address: string;
+    mobile: string;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export interface Review {
+    id: number;
+    user: User;
+    product: Product;
+    value: string;
+    createdAt: string;
+}

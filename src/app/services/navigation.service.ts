@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment.development';
-import { NavigationItem } from '../models/models';
+import { NavigationItem, User } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +51,62 @@ export class NavigationService {
   getProduct(id: number){
     let url = this.url + '/Products/' + id;
     return this.http.get(url);
+  }
+
+  registerUser(user: User){
+    let url = this.url + '/Users/Register';
+    return this.http.post(url, user, { responseType: 'text'});
+  }
+
+  loginUser(user: User){
+    let url = this.url + '/Users/Login';
+    return this.http.post(
+      url, 
+      user,
+      { responseType: 'text'});
+  }
+
+  submitReview(userId: number, productId: number, review: string) {
+    let obj: any = {
+      id: 0,
+      user: {
+        id: userId,
+        firstName: "",
+        lastName: "",
+        email: "string",
+        password: "string",
+        address: "",
+        mobile: "string",
+        createdAt: '',
+        updatedAt: ''
+      },
+      product: {
+        id: productId,
+        title: "string",
+        description: "",
+        productCategory: {
+          id: 0,
+          category: "string",
+          subCategory: ""
+        },
+        offer: {
+          id: 0,
+          title: "string",
+          discount: 0
+        },
+        price: 0,
+        quantity: 0,
+        imageName: "string"
+      },
+      value: review,
+    };
+
+    let url = this.url + '/Reviews/Post';
+    return this.http.post(url, obj, {responseType: 'text'});
+  }
+
+  getAllReviewsOfProducts(productId:number){
+    let url = this.url + '/Reviews/GetProductReviews/' + productId
+    return this.http.get(url)
   }
 }
