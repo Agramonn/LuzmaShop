@@ -2,6 +2,7 @@ import { Component, Input, OnInit} from '@angular/core';
 import { Product } from '../models/models';
 import { UtilityService } from '../services/utility.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-product',
@@ -28,8 +29,8 @@ export class ProductComponent implements OnInit {
     },
     imageName: '',
   };
-  utilityService: UtilityService = new UtilityService(this.jwt);
-  constructor(private jwt: JwtHelperService) {}
+  // utilityService: UtilityService = new UtilityService(this.jwt);
+  constructor(private jwt: JwtHelperService, public utilityService: UtilityService) {}
   
   ngOnInit(): void {}
 

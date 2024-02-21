@@ -10,25 +10,37 @@ import { UtilityService } from '../services/utility.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit{
-  constructor(public navigationService : NavigationService, public utilityService: UtilityService){ }
+export class HeaderComponent implements OnInit {
+  constructor(public navigationService: NavigationService, public utilityService: UtilityService) { }
   @ViewChild('modalTitle') modalTitle!: ElementRef;
-  @ViewChild('container', {read: ViewContainerRef, static: true})
+  @ViewChild('container', { read: ViewContainerRef, static: true })
   container!: ViewContainerRef;
+  cartItems: number = 0;
 
   ngOnInit(): void {
     this.navigationService.getCategoryList();
+
+    //Cart
+    if(this.utilityService.isLoggedIn()){
+      this.navigationService.getActiveCartOfUser(this.utilityService.getUser().id).subscribe((res: any) => {
+        this.cartItems = res.cartItems.length;
+      });
+    }
+
+    this.utilityService.changeCart.subscribe((res: any) => {
+      this.cartItems += parseInt(res);
+    });
   }
 
-  openModal(name: string){
+  openModal(name: string) {
     this.container.clear();
 
     let componentType!: Type<any>;
-    if(name == 'login'){
+    if (name == 'login') {
       componentType = LoginComponent;
       this.modalTitle.nativeElement.textContent = 'Enter Login Information';
-    } 
-    if(name == 'register') {
+    }
+    if (name == 'register') {
       componentType = RegisterComponent;
       this.modalTitle.nativeElement.textContent = 'Enter Register Information';
     }

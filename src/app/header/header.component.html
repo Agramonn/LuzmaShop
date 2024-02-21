@@ -33,7 +33,9 @@
             <button type="button"class="btn btn-outline-light" data-bs-toggle="modal" 
                 data-bs-target="#generalmodal" (click)="openModal('register')" *ngIf="!utilityService.isLoggedIn()">Register</button>
             <button type="button"class="btn btn-outline-light" *ngIf="utilityService.isLoggedIn()">Account</button>
-            <button type="button"class="btn btn-outline-light" routerLink="/cart" *ngIf="utilityService.isLoggedIn()">Cart</button>
+            <button type="button"class="btn btn-outline-light" routerLink="/cart" *ngIf="utilityService.isLoggedIn()">Cart
+                <span class="badge bg-primary text-dark" >{{cartItems}}</span>
+            </button>
             <button type="button"class="btn btn-outline-light"routerLink="/orders" *ngIf="utilityService.isLoggedIn()">Orders</button>
             <button type="button"class="btn btn-outline-light" (click)="utilityService.logoutUser()" *ngIf="utilityService.isLoggedIn()">LogOut</button>
         </div>

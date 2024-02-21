@@ -109,4 +109,19 @@ export class NavigationService {
     let url = this.url + '/Reviews/GetProductReviews/' + productId
     return this.http.get(url)
   }
+
+  addToCart(userid: number, productid: number){
+    let url = this.url + '/Carts/InsertCartItem/' + userid + '/' + productid;
+    return this.http.post(url, null, { responseType: 'text'})
+  }
+
+  getActiveCartOfUser(userid: number){
+    let url = this.url + '/UserCarts/GetActiveCartOfUser/' + userid;
+    return this.http.get(url)
+  }
+
+  getAllPreviousCarts(userid: number){
+    let url = this.url + '/UserCarts/GetAllPreviousCartsOfUser/' + userid;
+    return this.http.get(url)
+  }
 }
