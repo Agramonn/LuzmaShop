@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
     this.navigationService.loginUser(user).subscribe((res: any) => {
       this.message = "Logged In Successfully!";
       this.utilityService.setUser(res.toString());
-      console.log(this.utilityService.getUser());
     },
     err =>{
     //error response

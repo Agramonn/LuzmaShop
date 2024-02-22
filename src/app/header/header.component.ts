@@ -28,7 +28,12 @@ export class HeaderComponent implements OnInit {
     }
 
     this.utilityService.changeCart.subscribe((res: any) => {
-      this.cartItems += parseInt(res);
+      if(parseInt(res)==0){
+        this.cartItems =0;
+      }
+      else{
+        this.cartItems += parseInt(res);
+      }
     });
   }
 

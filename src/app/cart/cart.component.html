@@ -3,7 +3,7 @@
         <h3 class="w-25 border text-center py-2 my-rounded-corner">Current Cart</h3>
         <div class="mt-5">
             <div class="d-grid w-50 mx-auto mb-3">
-                <button class="btn-outline-success btn fs-4" type="button">Order</button>
+                <button class="btn-outline-success btn fs-4" type="button" routerLink="../orders">Order</button>
             </div>
 
             <table class="table w-50 mx-auto table-bordered table-hover my-shadow">
@@ -54,8 +54,8 @@
 
             <div class="cart-body px-4 py-2">
                 <div class="row g-0">
-                    <div class="col-2 px-2 py-2" *ngFor="let cartItem of cart.cartItems">
-                        <app-product [view]="'prevcaritem'" [product]="cartItem.product"/>
+                    <div class="col-2 px-2 py-2" *ngFor="let cartIt of cart.cartItems">
+                        <app-product [view]="'prevcaritem'" [product]="cartIt.product"/>
                     </div>
                 </div>
             </div>

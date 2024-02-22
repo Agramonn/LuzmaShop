@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'
 import { environment } from 'src/environments/environment.development';
-import { NavigationItem, User } from '../models/models';
+import { NavigationItem, Order, Payment, PaymentMethod, User } from '../models/models';
 
 @Injectable({
   providedIn: 'root'
@@ -124,4 +124,20 @@ export class NavigationService {
     let url = this.url + '/UserCarts/GetAllPreviousCartsOfUser/' + userid;
     return this.http.get(url)
   }
+
+  getPaymentMethods(){
+    let url = this.url + '/PaymentMethods';
+    return this.http.get<PaymentMethod[]>(url)
+  }
+
+  insertPayment(payment: Payment){
+    let url = this.url + '/Payments/InsertPayment';
+    return this.http.post(url, payment)
+  }
+
+  insertOrder(order: Order){
+    let url = this.url + '/Orders/InsertOrder';
+    return this.http.post(url, order)
+  }
+
 }

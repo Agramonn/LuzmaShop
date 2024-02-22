@@ -86,7 +86,7 @@ export interface Payment{
 export interface Order {
     id: number;
     user: User;
-    cart: UserCart;
+    userCart: UserCart;
     payment: Payment;
     createdAt: string;
 }
