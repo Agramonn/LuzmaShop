@@ -1,11 +1,11 @@
 <div class="grid-view" *ngIf="view === 'grid'">
-    <div class="card text-center">
+    <div class="card text-center" style="width: 20rem;">
         <div class="card-header fw-bold fs-5 text-success">
-            Header
+            {{product.productCategory.subCategory.toUpperCase()}}
         </div>
     
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="Product Image" class="img-fluid"
+            <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.webp" alt="Product Image" class="img-fluid"
             OpenProductsDetails [productId]="product.id">
         </div>
     
@@ -16,10 +16,10 @@
         </div>
     
         <div class="card-body">
-            <h5 class="card-title text-success"> {{utilityService.applyDiscount(product.price, product.offer.discount)}}
-                <span class="text-primary"> -{{product.offer.discount}}% </span>
+            <h5 class="card-title text-success"> ${{utilityService.applyDiscount(product.price, product.offer.discount)}} MXN
+                <span class="text-primary" *ngIf="product.offer.discount != 0"> -{{product.offer.discount}}% </span>
             </h5>
-            <h6 class="card-subtitle text-danger text-decoration-line-through">
+            <h6 *ngIf="product.offer.discount != 0" class="card-subtitle text-danger text-decoration-line-through">
                 {{product.price}}
             </h6>
         </div>
@@ -36,7 +36,7 @@
     <div class="card">
         <div class="row g-0">
             <div class="col-md-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="Product Image" class="img-fluid"
+                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.webp" alt="Product Image" class="img-fluid"
                 OpenProductsDetails [productId]="product.id">
             </div>
             <div class="col d-flex flex-column">
@@ -53,10 +53,10 @@
                 <div class="card-body">
                     <h4 class="card-title text-muted">Pricing</h4>
                     <h2 class="card-title text-success">
-                        {{utilityService.applyDiscount(product.price, product.offer.discount)}}
-                        <span class="text-primary">-{{product.offer.discount}}% </span>
+                        {{utilityService.applyDiscount(product.price, product.offer.discount)}} MXN
+                        <span class="text-primary" *ngIf="product.offer.discount != 0">-{{product.offer.discount}}% </span>
                     </h2>
-                    <h5 class="card-subtitle text-danger text-decoration-line-through"> {{product.price}} </h5>
+                    <h5 class="card-subtitle text-danger text-decoration-line-through" *ngIf="product.offer.discount != 0"> {{product.price}} </h5>
                 </div>
 
                 <div class="card-footer text-muted d-grid gap-2">
@@ -75,14 +75,14 @@
         <div class="row g-0">
 
             <div class="col-4 overflow-hidden d-flex justify-content-center align-items-center">
-                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="Product Image" class="img-fluid" OpenProductsDetails [productId]="product.id">
+                <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.webp" alt="Product Image" class="img-fluid" OpenProductsDetails [productId]="product.id">
             </div>
             <div class="col-8">
                 <div class="card-body">
                     <h5 class="card-title title">{{product.title}}</h5>
-                    <h5 class="card-title text-success">{{this.utilityService.applyDiscount(product.price, product.offer.discount)}}
-                        <span class="text-primary">-{{product.offer.discount}}% </span>
-                        <h6 class="card-subtitle text-danger text-decoration-line-through">{{product.price}}</h6>
+                    <h5 class="card-title text-success">{{this.utilityService.applyDiscount(product.price, product.offer.discount)}} MXN
+                        <span class="text-primary" *ngIf="product.offer.discount != 0">-{{product.offer.discount}}% </span>
+                        <h6 class="card-subtitle text-danger text-decoration-line-through" *ngIf="product.offer.discount != 0">{{product.price}}</h6>
                         
                     </h5>
                 </div>
@@ -99,7 +99,7 @@
     <div class="card text-center">
 
         <div class="overflow-hidden d-flex justify-content-center align-items-center">
-            <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.jpg" alt="Product Image" class="img-fluid rounded-start" OpenProductsDetails [productId]="product.id">
+            <img src="../../assets/Images/{{product.productCategory.subCategory}}/{{product.id}}/1.webp" alt="Product Image" class="img-fluid rounded-start" OpenProductsDetails [productId]="product.id">
         </div>
 
         <div class="card-body">

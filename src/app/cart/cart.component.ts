@@ -36,6 +36,7 @@ export class CartComponent implements OnInit{
   };
 
   usersPreviousCarts: UserCart[] = [];
+
   constructor(
     public utilityService: UtilityService,
     private navigationService: NavigationService
@@ -64,15 +65,15 @@ export class CartComponent implements OnInit{
     // Get Previous Carts
     this.navigationService.getAllPreviousCarts(this.utilityService.getUser().id).subscribe(
       (previousCartsResponse: any) => {
-        if (previousCartsResponse.cartItem == null) {
+        if (previousCartsResponse == null) {
           // If cartItem is null or undefined, initialize usersPreviousCarts as an empty array
           this.usersPreviousCarts = [];
-        } else if (Array.isArray(previousCartsResponse.cartItem)) {
+        } else if (Array.isArray(previousCartsResponse)) {
           // If cartItem is an array, assign it directly
-          this.usersPreviousCarts = previousCartsResponse.cartItem;
+          this.usersPreviousCarts = previousCartsResponse;
         } else {
           // If cartItem is not an array, create an array with a single item
-          this.usersPreviousCarts = [previousCartsResponse.cartItem];
+          this.usersPreviousCarts = [previousCartsResponse];
         }
       },
       (previousCartsError) => {

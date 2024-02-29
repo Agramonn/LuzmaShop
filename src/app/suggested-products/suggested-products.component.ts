@@ -13,7 +13,7 @@ export class SuggestedProductsComponent implements OnInit{
     category: '',
     subCategory: '',
   };
-  @Input() count: number =3
+  @Input() count: number = 4
   products: Product[] = [];
 
   constructor(private navigationService: NavigationService){}

@@ -9,35 +9,41 @@ import { SuggestedProduct } from '../models/models';
 export class HomeComponent implements OnInit{
   suggestedProducts: SuggestedProduct[] = [
    { 
-      banerimage: 'baner/banner_skincare.png',
+      banerimage: 'baner/banner_skincare.webp',
       category: {
         id:1,
         category: 'beauty',
         subCategory: 'skincare',}
     },
     { 
-      banerimage: 'baner/banner_makeup.png',
+      banerimage: 'baner/banner_makeup.webp',
       category: {
         id:2,
         category: 'beauty',
         subCategory: 'makeup',}
     },
     { 
-      banerimage: 'baner/banner_perfum.png',
+      banerimage: 'baner/banner_perfum.webp',
       category: {
         id:3,
         category: 'beauty',
         subCategory: 'perfume',}
     },
     { 
-      banerimage: 'baner/banner_bag.png',
+      banerimage: 'baner/banner_bag.webp',
       category: {
         id:4,
         category: 'clothes',
         subCategory: 'bags',}
     },
   ];
+
   constructor() {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    function random() {
+      return Math.random() - 0.5;
+    }
+    this.suggestedProducts.sort(() => random());
+  }
 
 }
